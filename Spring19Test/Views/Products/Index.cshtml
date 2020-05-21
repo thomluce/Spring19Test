@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Spring19Test.Models.Product>
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>Products</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-hover table-striped">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Supplier.name)*@
+            Supplier
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.listPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Supplier.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.productInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.listPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.productID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.productID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.productID })
+        </td>
+    </tr>
+}
+
+</table>

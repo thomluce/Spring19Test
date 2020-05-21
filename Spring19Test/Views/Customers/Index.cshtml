@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Spring19Test.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+}
+
+<h2>Customers</h2>
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-6">
+            @using (Html.BeginForm("Index", "Customers", FormMethod.Get))
+            {
+                <p>
+                    Search by customer Name (first, last, both) <span class="glyphicon glyphicon-search"></span>:
+                    @Html.TextBox("searchString")
+                    <input type="submit" value="Search" />
+                </p>
+            }
+        </div>
+        <div class="col-md-6">
+            @Html.ActionLink("Create New Customer", "Create")
+        </div>
+    </div>
+</div>
+
+<table class="table table-hover table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customerSince)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customerSince)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.customerID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.customerID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.customerID }) |
+                @Html.ActionLink("Orders","Index","CustomerOrders", new { id = item.customerID }, null)
+            </td>
+        </tr>
+    }
+
+</table>

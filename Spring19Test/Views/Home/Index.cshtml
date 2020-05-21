@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h2>MIS4200</h2>
+    <p>MIS4200 is the capstone system's developlent course in the College of Business at Ohio University.</p>
+
+    <p>The course reviews systems analysis and design principles while introducing Scrum and ASP.Net MVC. The majority of the class is a live client project using both Scrum and MVC.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Scrum</h2>
+        <p>
+            Scrum is a modern approach to project management based on Agile principles. The first part of the class is devoted to readings and quizzes over Scrum concepts which are then applied on the live project during the second part of the course.
+        </p>
+
+    </div>
+    <div class="col-md-4">
+        <h2>MVC</h2>
+        <p>
+            MVC -- model-view-controller is a modern approach to systems development supported by Microsoft in Microsoft Visual Studio. This classes explores MVC developent and how it differs from the more classical "web form" development used in earlier classes.
+        </p>
+        <p>  The following are links to some sample application pages</p>
+        <ul>
+            <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
+            <li>@Html.ActionLink("Orders", "Index", "Orders")</li>
+            <li>@Html.ActionLink("Order Details", "Index", "OrderDetails")</li>
+            <li>@Html.ActionLink("Products", "Index", "Products")</li>
+            <li>@Html.ActionLink("Suppliers", "Index", "Suppliers")</li>
+        </ul>
+        
+    </div>
+    <div class="col-md-4">
+        <h2>Live Client Project</h2>
+        <p>Over half of the class is a live client project using the tools and techniques taught in the first half of the semester. The project proceeds through a series of Sprints, each with its own planning, development, review and retorspective stages.</p>
+    </div>
+</div>

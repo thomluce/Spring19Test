@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Spring19Test.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Orders with details shown in a partial view</h2>
+
+
+<table class="table table-striped">
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.fullName)
+        </td>
+        <td>
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.description))
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.orderDate)
+        </td>
+
+    </tr>
+    <tr>
+        <td colspan="3">
+            @{
+              //  var oid = item.orderID;
+                Html.RenderPartial("_orderDetails", item.OrderDetails);
+             }
+        </td>
+    </tr>
+}
+
+</table>
+@Html.ActionLink("Back to Customers", "Index", "Customers")

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Spring19Test.Models.OrderDetail>
+
+
+<table class="table table-condensed table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.qtyOrdered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.description)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=>model.extPrice)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.qtyOrdered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.description)
+            @*@Html.DisplayFor(modelItem => item.productID)*@
+        </td>
+        <td>
+            
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.extPrice)
+        </td>
+
+    </tr>
+}
+
+</table>

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Email";
+}
+
+@{
+    var msg = TempData["mailError"].ToString();
+    if (msg == "")
+    {
+        <div class="alert alert-success">
+            <h3>An email was sent to your email address</h3>
+        </div>
+        @Html.ActionLink("Return to home page", "Index", "Home")
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            <h3>Unable to send email</h3>
+            <h4>Error msg = @msg</h4>
+        </div>
+        @Html.ActionLink("Return to home page", "Index", "Home")
+    }
+}

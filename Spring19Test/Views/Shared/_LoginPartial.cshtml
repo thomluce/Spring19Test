@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNet.Identity
+@using Spring19Test.Context;
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @{
+                var userID = User.Identity.GetUserName(); // get the email of the user
+                                                          // the next line is YOUR context, not mine!
+                MIS4200Context db = new Spring19Test.Context.MIS4200Context();
+                var userName = db.RegisteredUsers.Where(n => n.email == userID).FirstOrDefault().fullName;
+                var loggedInUserID = User.Identity.GetUserId();
+            }
+            @Html.ActionLink("Hello " + userName + "!", "Edit", "RegisteredUsers", new { id = loggedInUserID }, null)
+
+            @*@Html.ActionLink("Hello " + userName + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
